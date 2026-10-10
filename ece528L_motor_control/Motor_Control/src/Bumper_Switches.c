@@ -37,8 +37,14 @@ void Bumper_Switches_Init(void(*task)(uint8_t))
 
     // Configure the following pins as GPIO pins: P4.7, P4.6, P4.5, P4.3, P4.2, and P4.0
     // by clearing the corresponding bits in the SEL0 and SEL1 registers
-
-
+    P4SEL0 &= ~0xED;
+    P4SEL1 &= ~0xED;
+    P4DIR  &= ~0xED;
+    P4REN  |=  0xED;
+    P4OUT  |=  0xED;
+    P4IES  |=  0xED;
+    P4IFG  &= ~0xED;
+    P4IE   |=  0xED;
 
     // Set the direction of the following pins as input: P4.7, P4.6, P4.5, P4.3, P4.2, and P4.0
     // by clearing the corresponding bits in the DIR register
